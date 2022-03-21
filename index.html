@@ -10,17 +10,29 @@
     <div id="content"></div>
 
     <script>
-        fetch("https://ci-swapi.herokuapp.com/api/") // Returns first promise
+        /*fetch("https://ci-swapi.herokuapp.com/api/") // Returns first promise
             //.then(response => response.text())
             .then(response => response.json()) // Returns second promise, delivers on first promise
-            .then(data => { // Delivers on second promise
+            .then(data => { // Delivers on second promise (is an anonymous callback function)
                 //document.getElementById("content").innerText = data;
                 //document.getElementById("content").innerText = data[people];
                 document.getElementById("content").innerText = data.people;
-            });
+            })
             .catch((e) => {
                 console.error("Error: ", e);
-            }); // Console.logs out an error
+            }) // Console.logs out an error */
+
+        fetch("https://ci-swapi.herokuapp.com/api/")
+            .then(response => response.text()) // or .json()
+            .then(data => displayData(data)) 
+            .catch((e) => {
+                console.log("Error: ", e);
+            })
+
+        function displayData(data) {
+            document.getElementById("content").innerText = data;
+        } // Callback function - does what the anonymous callback function did before
+        
     </script>
 </body>
 </html>
