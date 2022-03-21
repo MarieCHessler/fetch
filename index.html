@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        fetch("https://ci-swapi.herokuapp.com/api/") // Returns first promise
+            //.then(response => response.text())
+            .then(response => response.json()) // Returns second promise, delivers on first promise
+            .then(data => { // Delivers on second promise
+                //document.getElementById("content").innerText = data;
+                //document.getElementById("content").innerText = data[people];
+                document.getElementById("content").innerText = data.people;
+            });
+            .catch((e) => {
+                console.error("Error: ", e);
+            }); // Console.logs out an error
+    </script>
+</body>
+</html>
